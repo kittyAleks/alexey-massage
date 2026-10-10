@@ -10,7 +10,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-ink-950 text-sand-200/70">
+    <footer className="bg-ink-950 pb-20 text-sand-200/70 sm:pb-0">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 py-14 sm:px-8">
         <div className="flex flex-col justify-between gap-10 md:flex-row md:items-center">
           <a href="#top" className="font-display text-3xl font-semibold text-sand-50">

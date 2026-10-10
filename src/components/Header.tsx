@@ -4,10 +4,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/content/site";
+import { useBooking } from "./BookingDialog";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { openBooking } = useBooking();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -67,12 +69,13 @@ export function Header() {
             <Phone className="size-4 text-bronze-400" />
             {site.phone}
           </a>
-          <a
-            href="#booking"
+          <button
+            type="button"
+            onClick={() => openBooking()}
             className="hidden rounded-full bg-bronze-500 px-5 py-2.5 text-sm font-semibold text-sand-50 transition hover:bg-bronze-600 sm:inline-flex"
           >
             Записатися
-          </a>
+          </button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -120,13 +123,16 @@ export function Header() {
               >
                 {site.phone}
               </a>
-              <a
-                href="#booking"
-                onClick={() => setOpen(false)}
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  openBooking();
+                }}
                 className="rounded-full bg-bronze-500 py-4 text-center font-semibold text-sand-50"
               >
                 Записатися на сеанс
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

@@ -18,11 +18,11 @@ export const site = {
 
 export const nav = [
   { href: "#about", label: "Про мене" },
-  { href: "#video", label: "Відео" },
   { href: "#services", label: "Послуги" },
   { href: "#gallery", label: "Галерея" },
   { href: "#reviews", label: "Відгуки" },
   { href: "#faq", label: "Питання" },
+  { href: "#contacts", label: "Контакти" },
 ];
 
 export const stats = [
@@ -102,25 +102,6 @@ export const services: Service[] = [
     duration: "60 хв",
     price: "850 ₴",
     icon: "lymph",
-  },
-];
-
-export const steps = [
-  {
-    title: "Запис",
-    text: "Залиште заявку на сайті або напишіть у месенджер — підберемо зручний час.",
-  },
-  {
-    title: "Консультація",
-    text: "Перед сеансом обговорюємо самопочуття, протипоказання, ваші тренування та цілі.",
-  },
-  {
-    title: "Сеанс",
-    text: "Окремий кабінет у залі й техніка, підібрана саме під ваше тіло та навантаження.",
-  },
-  {
-    title: "Рекомендації",
-    text: "Даю вправи на розтяжку й поради, щоб ефект тримався якомога довше.",
   },
 ];
 

@@ -1,73 +1,48 @@
-import { Activity, ArrowUpRight, Clock, Dumbbell, Hand, HeartPulse, Layers, Waves } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { services, type Service } from "@/content/site";
+"use client";
+
+import { services } from "@/content/site";
+import { useBooking } from "./BookingDialog";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 
-const icons: Record<Service["icon"], LucideIcon> = {
-  back: Hand,
-  sport: Dumbbell,
-  recovery: HeartPulse,
-  lymph: Waves,
-  deep: Layers,
-  neck: Activity,
-};
-
 export function Services() {
-  return (
-    <section id="services" className="bg-sand-100 py-24 sm:py-32">
-      <div className="mx-auto flex max-w-7xl flex-col gap-16 px-5 sm:px-8">
-        <SectionHeading
-          eyebrow="Послуги та ціни"
-          title="Масаж, підібраний під ваше завдання"
-          description="Не знаєте, що обрати? Напишіть мені — підкажу, яка техніка підійде саме вам."
-        />
+  const { openBooking } = useBooking();
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, i) => {
-            const Icon = icons[s.icon];
-            return (
-              <Reveal key={s.title} delay={0.06 * i} className="h-full">
-                <article className="group relative flex h-full flex-col gap-6 rounded-[1.75rem] bg-sand-50 p-8 ring-1 ring-ink-900/5 transition duration-500 hover:-translate-y-1 hover:bg-ink-900 hover:shadow-2xl hover:shadow-ink-900/20">
-                  {s.popular && (
-                    <span className="absolute top-8 right-8 rounded-full bg-bronze-500 px-3 py-1 text-xs font-semibold text-sand-50">
-                      Популярне
-                    </span>
-                  )}
-                  <span className="grid size-14 place-items-center rounded-2xl bg-bronze-500/12 text-bronze-600 transition group-hover:bg-bronze-500 group-hover:text-sand-50">
-                    <Icon className="size-6" />
-                  </span>
-                  <div className="flex flex-col gap-3">
-                    <h3 className="font-display text-3xl leading-tight text-ink-900 transition group-hover:text-sand-50">
-                      {s.title}
-                    </h3>
-                    <p className="leading-relaxed text-ink-600 transition group-hover:text-sand-200/75">
-                      {s.description}
-                    </p>
-                  </div>
-                  <div className="mt-auto flex items-end justify-between border-t border-ink-900/10 pt-6 transition group-hover:border-sand-50/15">
-                    <div className="flex flex-col gap-1">
-                      <span className="flex items-center gap-1.5 text-sm text-ink-400 group-hover:text-sand-200/60">
-                        <Clock className="size-4" />
-                        {s.duration}
+  return (
+    <section id="services" className="bg-sand-100 py-16 sm:py-24">
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 sm:px-8">
+        <SectionHeading eyebrow="Послуги та ціни" title="Послуги" align="left" />
+
+        <Reveal>
+          <ul className="grid gap-x-12 lg:grid-cols-2">
+            {services.map((s) => (
+              <li key={s.title} className="flex items-start justify-between gap-5 border-b border-ink-900/10 py-5">
+                <div className="flex flex-col gap-1">
+                  <h3 className="font-display text-2xl leading-tight text-ink-900">
+                    {s.title}
+                    {s.popular && (
+                      <span className="ml-3 align-middle font-sans text-xs font-semibold text-bronze-600">
+                        Популярне
                       </span>
-                      <span className="font-display text-3xl font-semibold text-ink-900 transition group-hover:text-bronze-300">
-                        {s.price}
-                      </span>
-                    </div>
-                    <a
-                      href="#booking"
-                      aria-label={`Записатися: ${s.title}`}
-                      className="grid size-12 place-items-center rounded-full border border-ink-900/15 text-ink-900 transition group-hover:border-bronze-400 group-hover:bg-bronze-500 group-hover:text-sand-50"
-                    >
-                      <ArrowUpRight className="size-5" />
-                    </a>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>
+                    )}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink-600">{s.description}</p>
+                </div>
+                <div className="flex shrink-0 flex-col items-end gap-2">
+                  <span className="font-display text-2xl font-semibold whitespace-nowrap text-ink-900">{s.price}</span>
+                  <span className="text-sm text-ink-400">{s.duration}</span>
+                  <button
+                    type="button"
+                    onClick={() => openBooking(s.title)}
+                    className="text-sm font-semibold text-bronze-600 underline-offset-4 hover:underline"
+                  >
+                    Записатися
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

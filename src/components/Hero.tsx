@@ -1,10 +1,12 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowRight, Dumbbell, Play } from "lucide-react";
+import { ArrowRight, Dumbbell, Play, X } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { site, stats } from "@/content/site";
+import { useBooking } from "./BookingDialog";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -17,6 +19,8 @@ export function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const { openBooking } = useBooking();
+  const [video, setVideo] = useState(false);
 
   return (
     <section
@@ -78,22 +82,24 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.4, ease }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#booking"
+            <button
+              type="button"
+              onClick={() => openBooking()}
               className="group inline-flex items-center gap-3 rounded-full bg-bronze-500 px-8 py-4 font-semibold text-sand-50 shadow-lg shadow-bronze-600/30 transition hover:bg-bronze-400"
             >
               Записатися на сеанс
               <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
-              href="#video"
+            </button>
+            <button
+              type="button"
+              onClick={() => setVideo(true)}
               className="group inline-flex items-center gap-3 rounded-full px-3 py-2 font-semibold text-sand-50"
             >
               <span className="grid size-12 place-items-center rounded-full border border-sand-50/40 transition group-hover:border-bronze-300 group-hover:bg-sand-50/10">
                 <Play className="size-4 fill-current" />
               </span>
               Дивитися відео
-            </a>
+            </button>
           </motion.div>
         </motion.div>
       </div>
@@ -116,6 +122,52 @@ export function Hero() {
           ))}
         </dl>
       </motion.div>
+
+      {/* Портал: секція має isolate, тож без нього шапка перекривала б вікно. */}
+      {video && createPortal(<VideoModal onClose={() => setVideo(false)} />, document.body)}
     </section>
+  );
+}
+
+// Те саме відео, але зі звуком і на весь екран.
+function VideoModal({ onClose }: { onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${site.name} за роботою`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      onClick={onClose}
+      className="fixed inset-0 z-[70] grid place-items-center bg-ink-950/95 p-4"
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Закрити"
+        className="absolute top-5 right-5 grid size-12 place-items-center rounded-full bg-sand-50/10 text-sand-50 transition hover:bg-sand-50/20"
+      >
+        <X className="size-6" />
+      </button>
+      <video
+        src={HERO_VIDEO}
+        poster={HERO_POSTER}
+        controls
+        autoPlay
+        playsInline
+        onClick={(e) => e.stopPropagation()}
+        className="aspect-9/16 max-h-[88svh] w-auto max-w-full rounded-2xl bg-black"
+      />
+    </motion.div>
   );
 }

@@ -17,17 +17,6 @@
 
   --font-sans: var(--font-manrope);
   --font-display: var(--font-cormorant);
-
-  --animate-marquee: marquee 40s linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
 }
 
 html {
@@ -48,8 +37,5 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .animate-marquee {
-    animation: none;
   }
 }
