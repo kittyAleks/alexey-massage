@@ -8,7 +8,6 @@ export function About() {
     <section id="about" className="py-16 sm:py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 md:grid-cols-[18rem_1fr] lg:grid-cols-[22rem_1fr] lg:gap-20">
         <Reveal className="mx-auto w-full max-w-[15rem] md:max-w-none">
-          {/* Вертикальний портрет із підписом на самому фото — показуємо цілком, без обрізання. */}
           <div className="relative aspect-941/1672 overflow-hidden rounded-[2rem] bg-ink-900">
             <Image
               src="/images/about.jpg"

@@ -20,7 +20,7 @@ const contacts = [
   { Icon: Clock, text: site.hours },
 ];
 
-// Часті питання й контакти в одному блоці — щоб сторінка закінчувалася швидше.
+// Часті питання й контакти в одному блоці — щоб сторінка закінчувалась швидше.
 export function Contacts() {
   const { openBooking } = useBooking();
 

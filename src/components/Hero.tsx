@@ -73,7 +73,7 @@ export function Hero() {
             className="mt-8 max-w-xl text-lg leading-relaxed text-sand-100/85 sm:text-xl"
           >
             Масаж у кабінеті тренажерного залу: знімаю біль і напругу, допомагаю швидше
-            відновлюватися після тренувань і повертаю свободу рухів.
+            відновлюватись після тренувань і повертаю свободу рухів.
           </motion.p>
 
           <motion.div
@@ -87,7 +87,7 @@ export function Hero() {
               onClick={() => openBooking()}
               className="group inline-flex items-center gap-3 rounded-full bg-bronze-500 px-8 py-4 font-semibold text-sand-50 shadow-lg shadow-bronze-600/30 transition hover:bg-bronze-400"
             >
-              Записатися на сеанс
+              Записатись на сеанс
               <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
             </button>
             <button
@@ -98,7 +98,7 @@ export function Hero() {
               <span className="grid size-12 place-items-center rounded-full border border-sand-50/40 transition group-hover:border-bronze-300 group-hover:bg-sand-50/10">
                 <Play className="size-4 fill-current" />
               </span>
-              Дивитися відео
+              Дивитись відео
             </button>
           </motion.div>
         </motion.div>

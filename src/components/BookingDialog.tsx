@@ -79,7 +79,7 @@ function BookingModal({ service, onService, onClose }: ModalProps) {
     }
 
     const lines = [
-      "Вітаю! Хочу записатися на масаж.",
+      "Вітаю! Хочу записатись на масаж.",
       `Ім'я: ${name}`,
       `Телефон: ${phone}`,
       `Послуга: ${service}`,
@@ -136,7 +136,7 @@ function BookingModal({ service, onService, onClose }: ModalProps) {
               <h2 id="booking-title" className="font-display text-3xl">
                 Запис на масаж
               </h2>
-              <p className="text-ink-600">Залиште заявку — я зв&apos;яжуся й підберу зручний час.</p>
+              <p className="text-ink-600">Залиште заявку — я зв&apos;яжусь й підберу зручний час.</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="flex flex-col gap-2">
@@ -174,7 +174,7 @@ function BookingModal({ service, onService, onClose }: ModalProps) {
               <textarea
                 name="comment"
                 rows={2}
-                placeholder="Що турбує, зручний час, тренуєтеся чи ні…"
+                placeholder="Що турбує, зручний час, тренуєтесь чи ні…"
                 className={`${fieldClass} resize-none`}
               />
             </label>
@@ -193,7 +193,7 @@ function BookingModal({ service, onService, onClose }: ModalProps) {
               Надіслати заявку
             </button>
             <p className="text-center text-xs text-ink-400">
-              Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.
+              Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.
             </p>
           </form>
         ) : (

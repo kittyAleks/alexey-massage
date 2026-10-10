@@ -36,7 +36,7 @@ export function Services() {
                     onClick={() => openBooking(s.title)}
                     className="text-sm font-semibold text-bronze-600 underline-offset-4 hover:underline"
                   >
-                    Записатися
+                    Записатись
                   </button>
                 </div>
               </li>

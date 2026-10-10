@@ -35,7 +35,7 @@ export function MobileCta() {
         onClick={() => openBooking()}
         className="flex-1 rounded-full bg-bronze-500 font-semibold text-sand-50"
       >
-        Записатися на сеанс
+        Записатись на сеанс
       </button>
     </div>
   );

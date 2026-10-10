@@ -74,7 +74,7 @@ export function Header() {
             onClick={() => openBooking()}
             className="hidden rounded-full bg-bronze-500 px-5 py-2.5 text-sm font-semibold text-sand-50 transition hover:bg-bronze-600 sm:inline-flex"
           >
-            Записатися
+            Записатись
           </button>
           <button
             type="button"
@@ -131,7 +131,7 @@ export function Header() {
                 }}
                 className="rounded-full bg-bronze-500 py-4 text-center font-semibold text-sand-50"
               >
-                Записатися на сеанс
+                Записатись на сеанс
               </button>
             </div>
           </motion.div>
