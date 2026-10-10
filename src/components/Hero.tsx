@@ -129,7 +129,7 @@ export function Hero() {
   );
 }
 
-// Те саме відео, але зі звуком і на весь екран.
+// Те саме відео на весь екран, з кнопками керування.
 function VideoModal({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();

@@ -6,14 +6,14 @@ import { Reveal } from "./ui/Reveal";
 export function About() {
   return (
     <section id="about" className="py-16 sm:py-24">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 md:grid-cols-[18rem_1fr] lg:grid-cols-[22rem_1fr] lg:gap-20">
-        <Reveal className="mx-auto w-full max-w-[15rem] md:max-w-none">
-          <div className="relative aspect-941/1672 overflow-hidden rounded-[2rem] bg-ink-900">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 md:grid-cols-[20rem_1fr] lg:grid-cols-[26rem_1fr] lg:gap-20">
+        <Reveal className="mx-auto w-full max-w-[20rem] md:max-w-none">
+          <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-ink-900">
             <Image
-              src="/images/about.jpg"
-              alt={`${site.name} у своєму кабінеті`}
+              src="/images/oleksii.jpg"
+              alt={`${site.name} у тренажерному залі`}
               fill
-              sizes="(min-width: 1024px) 352px, (min-width: 768px) 288px, 240px"
+              sizes="(min-width: 1024px) 416px, 320px"
               className="object-cover"
             />
           </div>
