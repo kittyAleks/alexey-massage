@@ -8,7 +8,7 @@ import { site, stats } from "@/content/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-// Вертикальне відео: на мобільному — фон на весь екран, на десктопі — картка праворуч.
+// Відео — фон на весь перший екран.
 const HERO_VIDEO = "/video/massage.mp4";
 const HERO_POSTER = "/images/hero-poster.jpg";
 
@@ -24,14 +24,25 @@ export function Hero() {
       ref={ref}
       className="relative isolate flex min-h-svh flex-col overflow-hidden bg-ink-950 text-sand-50"
     >
-      <motion.div style={{ y }} className="absolute inset-0 -z-20 hidden lg:block">
-        <Image src="/images/hero-bg.jpg" alt="" fill sizes="(min-width: 1024px) 100vw, 10vw" className="object-cover" />
-        <div className="absolute inset-0 bg-ink-950/80" />
-        <div className="absolute inset-0 bg-linear-to-r from-ink-950 via-ink-950/70 to-ink-950/40" />
+      <motion.div style={{ y }} className="absolute inset-0 -z-10">
+        <Image src={HERO_POSTER} alt="" fill priority sizes="100vw" className="object-cover object-[50%_40%]" />
+        <video
+          className="absolute inset-0 size-full object-cover object-[50%_40%] motion-reduce:hidden"
+          src={HERO_VIDEO}
+          poster={HERO_POSTER}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-ink-950/75 via-ink-950/55 to-ink-950/90 lg:from-ink-950/60 lg:via-ink-950/40 lg:to-ink-950/85" />
+        <div className="absolute inset-0 hidden bg-linear-to-r from-ink-950/85 via-ink-950/45 to-transparent lg:block" />
       </motion.div>
 
-      <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-12 px-5 pt-32 pb-16 sm:px-8 lg:grid-cols-[1.15fr_0.85fr]">
-        <motion.div style={{ opacity: fade }} className="flex flex-col">
+      <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-12 px-5 pt-32 pb-16 sm:px-8">
+        <motion.div style={{ opacity: fade }} className="flex max-w-3xl flex-col">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -84,36 +95,6 @@ export function Hero() {
               Дивитися відео
             </a>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.2, ease }}
-          className="absolute inset-0 -z-10 lg:relative lg:inset-auto lg:z-0 lg:justify-self-end"
-        >
-          <div className="relative size-full overflow-hidden lg:aspect-9/16 lg:h-[min(70vh,640px)] lg:w-auto lg:rounded-[2rem] lg:shadow-2xl lg:shadow-black/50 lg:ring-1 lg:ring-sand-50/15">
-            <Image src={HERO_POSTER} alt="" fill priority sizes="(min-width: 1024px) 360px, 100vw" className="object-cover" />
-            <video
-              className="absolute inset-0 size-full object-cover motion-reduce:hidden"
-              src={HERO_VIDEO}
-              poster={HERO_POSTER}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden="true"
-            />
-            <div className="absolute inset-0 bg-linear-to-b from-ink-950/75 via-ink-950/55 to-ink-950/90 lg:hidden" />
-            <div className="absolute inset-x-0 bottom-0 hidden items-center gap-3 bg-linear-to-t from-ink-950/85 to-transparent p-5 pt-16 lg:flex">
-              <span className="relative flex size-2.5">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-bronze-300 opacity-75" />
-                <span className="relative inline-flex size-2.5 rounded-full bg-bronze-400" />
-              </span>
-              <span className="text-sm font-medium text-sand-100">{site.name} за роботою</span>
-            </div>
-          </div>
         </motion.div>
       </div>
 
