@@ -125,6 +125,7 @@ export const steps = [
 ];
 
 export const gallery = [
+  { src: "/images/room.jpg", alt: "Кабінет масажу", w: 632, h: 418 },
   { src: "/images/g1.jpg", alt: "Тренажерний зал", w: 1200, h: 900 },
   { src: "/images/g2.jpg", alt: "Масаж спини", w: 720, h: 1280 },
   { src: "/images/g3.jpg", alt: "Тренування з гантелями", w: 1200, h: 1500 },
